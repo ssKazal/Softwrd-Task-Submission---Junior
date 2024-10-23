@@ -19,7 +19,33 @@ Follow these steps to set up and run the project:
     sudo docker compose up
     ```
 
+## API Documentation
+
+Once the application is running, FastAPI provides two types of interactive API documentation automatically:
+
+1. **Swagger UI**:
+
+    - Accessible at `/docs` (e.g., `http://localhost:8000/docs`).
+    - Provides a user-friendly interface to interact with the API.
+
+2. **ReDoc**:
+    - Accessible at `/redoc` (e.g., `http://localhost:8000/redoc`).
+    - Presents OpenAPI documentation in a more detailed and structured format.
+
+## Testing
+
+1. **To run the tests for the application, use the following command:**
+    ```sh
+    sudo docker compose run --rm web pytest
+    ```
+2. **To generate a coverage report, you can use:**
+    ```sh
+    sudo docker compose run --rm web pytest --cov=src
+    ```
+
 ## Deployment
+
+When deploying the application, consider using a VPS (Virtual Private Server) or cloud service (e.g., AWS) with root access to a Linux system.
 
 1. **Modify Caddyfile**:
 
@@ -27,6 +53,6 @@ Follow these steps to set up and run the project:
 
 2. **Deploy the Application**
     ```sh
-    sudo docker compose build
-    sudo docker compose up -d
+    sudo docker compose -f docker-compose-prod.yml build
+    sudo docker compose -f docker-compose-prod.yml up -d
     ```
